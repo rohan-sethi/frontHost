@@ -1,0 +1,581 @@
+
+<html><head>
+<title>Google APIs - Sample JS Page</title>
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+<link rel="stylesheet" href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css">
+<style>
+/* Photo Banner GrsNuSVn-Qs */
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	
+	height: 100%;
+}
+
+
+.container {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+ 
+
+}
+
+.photobanner,
+.photobanner2 {
+ margin-left:1300px;
+  height: 33.33vh;
+  width: 60000px;
+  font-size: 0;
+}
+
+
+.first {
+  -webkit-animation: bannermove 30s linear infinite;
+  -moz-animation: bannermove 30s linear infinite;
+  -ms-animation: bannermove 30s linear infinite;
+  -o-animation: bannermove 30s linear infinite;
+  animation: bannermove 750s linear infinite;
+}
+
+
+@-webkit-keyframes "bannermove" {
+  0% {
+    margin-left: 0px;
+  }
+  
+
+
+  
+  100% {
+    margin-left: -31999px;
+  }
+}
+
+
+span.in {
+  border-bottom: solid !important;
+}
+
+.main {
+  border-right: solid;
+}
+
+.photobanner div {
+
+  transition: all 0.5s ease;
+}
+
+.photobanner div {
+  display: inline-block;
+  height: 100%;
+  width: 350px;
+  background: lightgrey;
+}
+
+.first span {}
+
+.in {
+  overflow: hidden;
+}
+
+span {}
+
+.img img {
+  border: solid;
+  margin-left: -5px;
+  margin-top:-8px;
+  height: 230px;
+}
+
+.img {
+  position: absolute;
+  width: 250px !important;
+  height: 160px !important;
+  margin: 50px;
+  margin-top: 54px;
+  margin-left: 5px;
+}
+
+.viewIcon {
+  margin-left: 200px;
+  border-width: 0px;
+  width: 50px !important;
+  height: 50px !important;
+  margin-top: 50px;
+  margin-left: 290px;
+}
+
+.viewIcon img {
+  margin-left: -5px;
+}
+
+.likeIcon {
+  margin-left: 200px;
+  border-width: 0px;
+  width: 50px !important;
+  height: 50px;
+  margin-top: 50px;
+  margin-left: 290px;
+}
+
+.img2 {
+  margin-top: 5px;
+}
+
+.likeIcon img {
+  margin-left:
+}
+
+.videohead {
+  overflow: hidden;
+  margin-top: 2px;
+  width: 345px;
+  height: 45px;
+  position: absolute;
+  font-size: 18px;
+  padding-left: 2px;
+}
+
+.viewCount {
+  width: 53px !important;
+  height: 2px !important;
+}
+
+.viewLine {
+  font-size: 16px;
+  width: 33px !important;
+  height: 150px;
+  margin-left: -16px;
+}
+
+.view {
+  margin-top: -116px;
+  position: absolute;
+  word-break: break-word;
+  width: 100px !important;
+  margin-left: -5px;
+  height: 2px !important;
+  width: 60px !important;
+}
+
+.like {
+  margin-top: -53px;
+  position: absolute;
+  word-break: break-word;
+  width: 100px !important;
+  margin-left: -21px;
+  height: 2px !important;
+  width: 70px !important;
+}
+
+.comment {
+  margin-top: -1px;
+  position: absolute;
+  word-break: break-word;
+  width: 100px !important;
+  margin-left: -5px;
+  height: 2px !important;
+  width: 45px !important;
+}
+
+.grade {
+
+	color: #fff !important;
+	background: linear-gradient(-45deg, #FFFFCC, #DAA520, #FFFF33, #FFFFFF,#FFFFCC,#FFFF33) !important;
+	background-size: 400% 400% !important;
+
+	animation: Gradient 2s ease infinite !important;
+}
+
+.grade2 {
+
+	color: #fff !important;
+	background: linear-gradient(-45deg,#4169E1,#0000CD,#00008B,#000080,#FFFFFF,#00008B,#000080) !important;
+	background-size: 400% 400% !important;
+
+	animation: Gradient 6s ease infinite !important;
+}
+
+
+.grade3 {
+
+	color: #fff !important;
+	background: linear-gradient(-45deg,#000000,#696969,#808080,#696969,#FFFFFF,#FFFFFF,#A9A9A9,#C0C0C0,#D3D3D3,#FFFFFF) !important;
+	background-size: 400% 400% !important;
+
+	animation: Gradient 4s ease infinite !important;
+}
+
+
+.grade4 {
+
+	color: #fff !important;
+	background: linear-gradient(-45deg,#FF6666,#FF6666,#FF3333,#FF0000,#FFFFFF,#FFFFFF,#FF6666,#FF6666,#FF3333) !important;
+	background-size: 400% 400% !important;
+
+	animation: Gradient 2s ease infinite !important;
+}
+
+.grade5 {
+
+	color: #fff !important;
+	background: linear-gradient(-45deg,#dfb48c,#ce8d50,#b87333,#a4672e,#FFFFFF,#FFFFFF,#dfb48c,#ce8d50,#b87333) !important;
+	background-size: 400% 400% !important;
+
+	animation: Gradient 4s ease infinite !important;
+}
+
+
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+.viewIcon,.viewCount{
+background:transparent !important;
+}
+
+
+
+.white{
+color:white;
+}
+
+.black{
+color:black;
+}
+
+.red{
+color:darkred;
+}
+
+.mr{
+margin-right:500px !important;
+
+}
+</style>
+
+<!-- <meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'> -->
+
+</head>
+
+<body>
+
+
+  <div  class="container mr">
+    <div id ="one" class="photobanner">
+    
+    
+    
+      <div class="first main">
+        <b class="videohead"><span class="in">This is some channel video text which can be treated as a caption of any video avaiable online on youtube but this is just for fun thanks.</span></b>
+        <div class="img">
+           <img width="250" height="162" src="https://i.ytimg.com/vi/Va99oh8pzRI/mqdefault.jpg?autoplay=1" ></img>
+       </div>
+        <div class="viewIcon">
+          <img width="60" height="60" src="http://www.endlessicons.com/wp-content/uploads/2012/11/view-icon-614x460.png">
+          <img style="margin-left:5px;" class='img2' width="40" height="40" src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Thumbs_up_font_awesome.svg">
+
+          <img style="margin-top:14px;margin-left:5px;" class='img2' width="40" height="40" src="http://www.free-icons-download.net/images/comment-bubble-icon-63315.png">
+          <div class="viewCount">
+            <b class="viewLine view">                       <span class="viewLine">20000000</span>            </b>
+            <b class="viewLine like">                       <span class="" class="viewLine">667</span>            </b>
+            <b class="viewLine comment">                       <span class="viewLine">33454</span>            </b>
+          </div>
+        </div>
+      </div>
+
+                 
+
+      
+      
+    
+      
+      
+      
+
+    </div>
+  </div>
+  <div  class="container">
+    <div id ="two" class="photobanner mr">
+     
+     
+              <div class="first main">
+        <b class="videohead"><span class="in">This is some channel video text which can be treated as a caption of any video avaiable online on youtube but this is just for fun thanks.</span></b>
+        <div class="img">
+          <img width="250" height="160" src="http://placehold.it/350x150">
+        </div>
+        <div class="viewIcon">
+          <img width="60" height="60" src="http://www.endlessicons.com/wp-content/uploads/2012/11/view-icon-614x460.png">
+          <img style="margin-left:5px;" class='img2' width="40" height="40" src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Thumbs_up_font_awesome.svg">
+
+          <img style="margin-top:14px;margin-left:5px;" class='img2' width="40" height="40" src="http://www.free-icons-download.net/images/comment-bubble-icon-63315.png">
+          <div class="viewCount">
+            <b class="viewLine view">                       <span class="viewLine">20000000</span>            </b>
+            <b class="viewLine like">                       <span class='' class="viewLine">667</span>            </b>
+            <b class="viewLine comment">                       <span class="viewLine">33454</span>            </b>
+          </div>
+        </div>
+      </div>
+      
+      
+       
+     
+     
+     
+     
+    </div>
+  </div>
+  
+  
+  
+  <div class="container">
+    <div id="three"  class="photobanner mr">
+      
+      
+       <div class="first main">
+        <b class="videohead"><span class="in">This is some channel video text which can be treated as a caption of any video avaiable online on youtube but this is just for fun thanks.</span></b>
+        <div class="img">
+          <img width="250" height="160" src="http://placehold.it/350x150">
+        </div>
+        <div class="viewIcon">
+          <img width="60" height="60" src="http://www.endlessicons.com/wp-content/uploads/2012/11/view-icon-614x460.png">
+          <img style="margin-left:5px;" class='img2' width="40" height="40" src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Thumbs_up_font_awesome.svg">
+
+          <img style="margin-top:14px;margin-left:5px;" class='img2' width="40" height="40" src="http://www.free-icons-download.net/images/comment-bubble-icon-63315.png">
+          <div class="viewCount">
+            <b class="viewLine view">                       <span class="viewLine">20000000</span>            </b>
+            <b class="viewLine like">                       <span class='' class="viewLine">667</span>            </b>
+            <b class="viewLine comment">                       <span class="viewLine">33454</span>            </b>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+    </div>
+  </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script>
+var data = {};
+var checkCount = 2;
+var thrashHold = 7;
+var marker=1;
+var w1, w2, w3, w4;
+
+w1 = new Worker("swag.js");
+w2 = new Worker("swag2.js");
+w3 = new Worker("swag3.js");
+
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var idstack = [];
+
+$.ajax({
+  url: "http://localhost:8088/rest/getListId/getvid",
+  method: "GET",
+  async: false,
+  success: function(d) {
+    data = d;
+  }
+});
+
+
+function removeThings(key) {
+  $('#one #' + key + ' .img,#two #' + key + ' .img,#three #' + key + ' .img').html("");
+  $('#one #' + key + ' ,#two #' + key + ',#three #' + key + ' ').removeClass("grade grade2 grade3");
+  $('#one #' + key + ' .viewIcon img,#two #' + key + ' .viewIcon img,#three #' + key + ' .viewIcon img').removeClass("viewFlash putLike");
+}
+
+
+
+function insertData(e,d1,isPause,time_stop){
+	
+	console.log(idstack);
+	
+	 var id = e.data.substring(e.data.indexOf('cuttings') + 10, e.data.indexOf('cuthere'));
+	    var vid = e.data.substring(e.data.indexOf('idttings') + 10, e.data.indexOf('puthere'));
+	    var n = parseInt(id.substring("4"));
+
+	    d1.insertAdjacentHTML('beforeend', e.data);
+	    onYouTubeIframeAPIReady();
+	    var player;
+
+	    function onYouTubeIframeAPIReady() {
+	      idstack.push( new YT.Player(id, {
+	          height: '200',
+	          width: '290',
+	          playerVars: {
+	            autoplay: 1,
+	            start: 15,
+	            end:18
+	          },
+	          videoId: vid,
+	          events: {
+	            'onReady': onPlayerReady,
+	            'onStateChange': onPlayerStateChange
+	          }
+	        }));
+	    }
+
+
+	    function onPlayerReady(event) {
+	    	if(isPause)
+	      event.target.pauseVideo();
+	
+	    }
+	    var done = false;
+
+	    function onPlayerStateChange(event) {
+
+	       if (event.data == YT.PlayerState.PLAYING && !done) {
+	      //  setTimeout(stopVideo, parseInt(time_stop));
+	        done = true;
+	      } 
+	    }
+
+	    function stopVideo() {
+	      idstack[n].stopVideo();
+	    }
+	
+}
+
+
+function addData(key) {
+
+  data.key = key;
+  var d1 = document.getElementById('one');
+  var d2 = document.getElementById('two');
+  var d3 = document.getElementById('three');
+
+  w1 = new Worker("swag.js");
+  w2 = new Worker("swag2.js");
+  w3 = new Worker("swag3.js");
+
+
+  w3.postMessage(data);
+  w1.postMessage(data);
+  w2.postMessage(data);
+
+  w1.onmessage = function(e) {
+	  insertData(e,d1,true,5000);
+  };
+
+  w2.onmessage = function(e) {
+	  insertData(e,d2,true,2000);
+  };
+  
+  w3.onmessage = function(e) {
+	  insertData(e,d3,true,1000);
+  };
+
+
+}
+
+function addThings(key) {
+
+
+  for (var k = key; k < key + 1; k++, thrashHold++) {
+    addData(k);
+  }
+
+}
+
+var remove = 1;
+for (var key in data.first) {
+
+  if (key == thrashHold) break;
+
+  console.log(key);
+  addData(key);
+}
+
+
+function startPlay(){
+//	alert();
+	var player = idstack.shift();
+//	player.setSize(500, 500);
+  //  console.log();
+ var   e = $('#'+player.a.id);
+ 
+
+console.log(e.requestFullScreen);
+// var requestFullScreen = iframe.requestFullScreens;
+
+ 
+	player.playVideo();
+	
+    if (e.requestFullscreen) {
+        e.requestFullscreen();
+    } else if (e.webkitRequestFullscreen) {
+        e.webkitRequestFullscreen();
+    } else if (e.mozRequestFullScreen) {
+        e.mozRequestFullScreen();
+    } else if (e.msRequestFullscreen) {
+        e.msRequestFullscreen();
+    }
+	
+//	requestFullScreen.bind(iframe)();
+	setTimeout(startPlay,3000);
+	
+}
+
+
+setInterval(function() {
+  $('.viewFlash').addClass("flash animated");
+  $('.putLike').addClass("fadeOutUp animated");
+  $('.downLike').addClass("hinge animated");
+
+  $('.main').show();
+
+  if (+$("#one #" + checkCount).offset().left < -200) {
+
+    $('.viewFlash').removeClass("flash animated");
+    $('.putLike').removeClass("fadeOutUp animated");
+    $('.downLike').removeClass("hinge animated");
+
+    removeThings(checkCount);
+    addThings(thrashHold);
+   
+    checkCount++;
+  }
+  
+  if(+$("#one #" + checkCount).offset().left < 1600 && marker ==1) { marker=2;setTimeout(startPlay(),6000);}
+  
+  
+}, 200);
+
+
+</script>
+
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,295 @@
+
+<html><head><title>Google APIs - Sample JS Page</title></head>
+<body>
+
+<script>
+
+  /***** START BOILERPLATE CODE: Load client library, authorize user. *****/
+
+  // Global variables for GoogleAuth object, auth status.
+  var GoogleAuth;
+  var nextPage='';
+  var buffer=[];
+  var i=0;
+  var tempDate ='2018-01-02T22:45:01.000Z';//'2017-12-31T00:00:00Z';
+  var currDate ='2018-01-02T22:50:00.000Z';//'2017-12-31T00:05:00Z';
+ 
+  
+  /**
+   * Load the API's client and auth2 modules.
+   * Call the initClient function after the modules load.
+   */
+  function handleClientLoad() {
+    gapi.load('client:auth2', initClient);
+  }
+
+  function initClient() {
+    // Initialize the gapi.client object, which app uses to make API requests.
+    // Get API key and client ID from API Console.
+    // 'scope' field specifies space-delimited list of access scopes
+   // gapi.client.setApiKey("AIzaSyA3uqOW2ekN8CTvqbkHq4CMuzV6zIg-oYU");
+    gapi.client.init({
+    	
+        'apiKey':'AIzaSyBZrZwN8znFdEqCObgNDasi98XdbPlQrqc',
+        'clientId': '169092825592-fm1efcllvk145gre8c75ssf23k9eolg8.apps.googleusercontent.com',
+        'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
+        'scope': 'https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtubepartner'
+    }).then(function () {
+      GoogleAuth = gapi.auth2.getAuthInstance();
+
+      // Listen for sign-in state changes.
+      GoogleAuth.isSignedIn.listen(updateSigninStatus);
+
+      // Handle initial sign-in state. (Determine if user is already signed in.)
+      setSigninStatus();
+
+      // Call handleAuthClick function when user clicks on "Authorize" button.
+      $('#execute-request-button').click(function() {
+    	  console.log('yo');
+        handleAuthClick(event);
+      }); 
+    });
+  }
+
+  function handleAuthClick(event) {
+    // Sign user in after click on auth button.
+     console.log("hi");
+    GoogleAuth.signIn();
+    console.log("hi");
+  }
+
+  function setSigninStatus() {
+    var user = GoogleAuth.currentUser.get();
+    isAuthorized = user.hasGrantedScopes('https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtubepartner');
+    // Toggle button text and displayed statement based on current auth status.
+    if (isAuthorized) {
+      defineRequest();
+    }
+  }
+
+  function updateSigninStatus(isSignedIn) {
+    setSigninStatus();
+  }
+
+  function createResource(properties) {
+    var resource = {};
+    var normalizedProps = properties;
+    for (var p in properties) {
+      var value = properties[p];
+      if (p && p.substr(-2, 2) == '[]') {
+        var adjustedName = p.replace('[]', '');
+        if (value) {
+          normalizedProps[adjustedName] = value.split(',');
+        }
+        delete normalizedProps[p];
+      }
+    }
+    for (var p in normalizedProps) {
+      // Leave properties that don't have values out of inserted resource.
+      if (normalizedProps.hasOwnProperty(p) && normalizedProps[p]) {
+        var propArray = p.split('.');
+        var ref = resource;
+        for (var pa = 0; pa < propArray.length; pa++) {
+          var key = propArray[pa];
+          if (pa == propArray.length - 1) {
+            ref[key] = normalizedProps[p];
+          } else {
+            ref = ref[key] = ref[key] || {};
+          }
+        }
+      };
+    }
+    return resource;
+  }
+
+  function removeEmptyParams(params) {
+    for (var p in params) {
+      if (!params[p] || params[p] == 'undefined') {
+        delete params[p];
+      }
+    }
+    return params;
+  }
+
+  function executeRequest(request) {
+    request.execute(function(response) {
+     obj = response;	
+      //console.log(response);
+     // nextPage="new value";
+      console.log(i);
+      i++;
+    //  console.log(response.nextPageToken);
+      
+      for(var j=0;j<obj.items.length;j++)
+    	  {
+    	  /*  console.log(obj.items[j].id.videoId);
+    	  console.log(obj.items[j].snippet.title);
+    	  console.log(obj.items[j].snippet.channelTitle);
+    	  console.log(obj.items[j].snippet.publishedAt);
+    	  console.log(obj.items[j].snippet.thumbnails.medium.url);  */
+    	  var ob = {};
+    	
+    	  try{
+    	  ob.videoId = obj.items[j].id.videoId;
+    	  ob.title = obj.items[j].snippet.title;
+          ob.channelTitle = obj.items[j].snippet.channelTitle;
+          ob.publishedAt = obj.items[j].snippet.publishedAt;
+          ob.url = obj.items[j].snippet.thumbnails.medium.url;
+          ob.fromTime = tempDate,
+          ob.toTime = currDate
+    	  }
+    	  catch(err){console.log(obj.items[j]);console.log(err);}
+    	  
+    	  buffer.push(ob);
+    	 
+    	  
+    	//  console.log(ob);
+    	  
+    	 }
+      
+       var newData = {};
+	  newData.arr = buffer;
+	  buffer=[];
+	   
+
+      $.ajax({
+          url: "http://localhost:8088/rest/hello/post",
+          method: "POST",
+			
+			contentType: 'text/plain',
+          accept: 'text/plain',
+          data: JSON.stringify(newData),
+          success: function(d) {
+        	  
+        	  
+        	  
+        	  
+        	   if(response.nextPageToken  && obj.items.length > 0){
+        	    	//  setTimeout(function() 
+        	    			  {    		   
+        	    		  buildApiRequest('GET',
+        	    	               '/youtube/v3/search',
+        	    	               {'maxResults': '50',
+        	    	                'part': 'snippet',
+        	    	             
+        	    	                'order': 'viewCount',
+        	    	                'pageToken':response.nextPageToken,
+        	    	                'publishedAfter': tempDate,
+        	    	                'publishedBefore': currDate,
+        	    	                'type': ''});  		  
+        	    		}
+        	    	  //, 0);
+        	      }
+        	    
+        	      else{
+        	    	  
+        		 // setTimeout(function() 
+        				  {
+        	    		  
+        	    		  tempDate = new Date(tempDate);
+        	    		  currDate = new Date(currDate);
+        	    		  var locDate = new Date(currDate);
+        	    		  tempDate = new Date(currDate.setSeconds(currDate.getSeconds() + 1)).toISOString();
+        	    		  currDate = new Date(locDate.setMinutes(locDate.getMinutes() + 5)).toISOString();
+        	    		  
+        	    		  buildApiRequest('GET',
+        	    	               '/youtube/v3/search',
+        	    	               {'maxResults': '50',
+        	    	                'part': 'snippet',	             
+        	    	                'order': 'viewCount',
+        	    	                'publishedAfter': tempDate,
+        	    	                'publishedBefore': currDate,
+        	    	                'type': ''}); 
+        	    		  
+        	    		}
+        		  //, 0);  
+        	    	  
+        	      }
+        	  
+        	  
+      	  
+              
+          }
+      });
+      
+      
+      
+      
+   
+      
+/*       if(i==20){
+    	  
+    	  var newData = {};
+    	  newData.arr = buffer;
+    	  $.ajax({
+              url: "http://localhost:8088/rest/hello/post",
+              method: "POST",
+				
+				contentType: 'text/plain',
+              accept: 'text/plain',
+              data: JSON.stringify(newData),
+              success: function(d) {
+                  console.log(d);
+              }
+          });
+      } */
+   
+    });	
+  }
+
+  function buildApiRequest(requestMethod, path, params, properties) {
+    params = removeEmptyParams(params);
+    var request;
+    if (properties) {
+      var resource = createResource(properties);
+      request = gapi.client.request({
+          'body': resource,
+          'method': requestMethod,
+          'path': path,
+          'params': params
+      });
+    } else {
+      request = gapi.client.request({
+          'method': requestMethod,
+          'path': path,
+          'params': params
+      });
+    }
+    executeRequest(request);
+  }
+
+  /***** END BOILERPLATE CODE *****/
+
+  
+  function defineRequest() {
+    // See full sample for buildApiRequest() code, which is not 
+// specific to a particular API or API method.
+//search_sort=video_view_count&filters=month%2C+video&search_query=site%3Ayoutube.com
+
+buildApiRequest('GET',
+                '/youtube/v3/search',
+                {'maxResults': '50',
+                 'part': 'snippet',
+                 /* 'pageToken':'CBkQAA', */
+                 'order': 'viewCount',
+                
+                 'publishedAfter': tempDate,
+                 'publishedBefore':currDate,
+                 'type': ''});
+    
+
+    
+//console.log('yoyoy');    
+    
+
+  }
+</script>
+
+<button id="execute-request-button">Authorize</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script async defer src="https://apis.google.com/js/api.js" 
+        onload="this.onload=function(){};handleClientLoad()" 
+        onreadystatechange="if (this.readyState === 'complete') this.onload()">
+</script>
+</body></html>
